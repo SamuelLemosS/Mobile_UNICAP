@@ -4,14 +4,16 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <TextInput 
-        placeholder='Digite sua tarefa'
-        style={styles.input}
-      />
-      <Button
-        placeholder='Adicine a tarefa'
-        style={styles.teste}
-      />
+      <View style={styles.view}>
+        <TextInput 
+          placeholder='Digite sua tarefa'
+          style={styles.input}
+        />
+        <Button
+          placeholder='Adicine a tarefa'
+          style={styles.teste}
+        />
+      </View>
       <Text>Open up App.js to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>
@@ -34,4 +36,9 @@ const styles = StyleSheet.create({
   teste:{
     backgroundColor:"black",
   },
+  view:{
+    borderWidth: 1,
+    borderRadius: 5,
+    borderBlockColor:"black"
+  }
 });
