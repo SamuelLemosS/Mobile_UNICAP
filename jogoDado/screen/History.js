@@ -6,29 +6,45 @@ import {
   View,
   Button,
   FlatList,
-  TouchableOpacity,
+  SectionList,
   Image,
 } from "react-native";
 import { useEffect, useReducer, useState } from "react";
+import useStore from '../Store'
 
 export default function History() {
   const [text, setText] = useState("");
+  const store = useStore()
 
-  function reducer(state, action) {
-    if (action.type === "addItem") {
-      return { ...state, data: [...state.data, text] };
-    }
-  }
-
-  const [state, dispatch] = useReducer(reducer, { data: [] });
+  const data = store.historico.reverse()
 
   useEffect(() => {
-    console.log(state.data);
-  });
+    console.log(data)
+  })
 
   return (
     <View style={styles.container}>
-     <Text>tsete</Text>
+      {/* <SectionList
+      sections={DATA}
+      keyExtractor={(item, index) => item + index}
+      renderItem={({item}) => (
+        <View style={styles.item}>
+          <Text style={styles.title}>{item}</Text>
+        </View>
+      )}
+      renderSectionHeader={({section: {title}}) => (
+        <Text style={styles.header}>{title}</Text>
+      )}
+    /> */}
+    <FlatList
+      data={data}
+      renderItem={({item}) => (
+        <View style={styles.view}>
+          <Text>{item.resultado}</Text>
+          <Text>{item.date}</Text>
+        </View>
+      )}
+    />
       
     </View>
   );
@@ -41,25 +57,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  input: {
-    margin: 10,
-    width: 150,
-    height: 50,
-    borderWidth: 1,
-    borderRadius: 5,
-    borderBlockColor: "black",
-    padding: 5,
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    width: 100,
-    height: 50,
-    borderRadius: 5,
-    padding: 5,
-    margin: 10,
-  },
   view: {
     alignItems:'center',
     justifyContent: 'space-between',
@@ -69,6 +66,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     borderBlockColor: "black",
+    padding: 10,
   },
   text: {
     marginBottom: 50,

@@ -6,8 +6,8 @@ const Stack = createStackNavigator();
 export function Routes() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="History" component={History} />
+      <Stack.Screen name="Home" component={Home} options={{headerTitle:'Jogo'}}/>
+      <Stack.Screen name="History" component={History} options={{headerTitle:'Histórico'}} />
     </Stack.Navigator>
   );
 }
