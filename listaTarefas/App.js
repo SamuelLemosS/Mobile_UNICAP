@@ -48,7 +48,7 @@ export default function App() {
           </View>
         )}
       />
-      <Text style={styles.text}>{state.data.length} Tareas</Text>
+      <Text style={styles.text}>{state.data.length} Tarefas</Text>
     </View>
   );
 }
