@@ -20,14 +20,16 @@ export default function Login() {
   const navigation = useNavigation();
 
   function login(){
-    
+    console.log(email)
+    console.log(password)
+    navigation.navigate("Home")
   }
 
   useEffect(() => {});
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttons}>
+      <View style={styles.views}>
       <TextInput
           onChangeText={setEmail}
           placeholder="Email"
@@ -40,15 +42,15 @@ export default function Login() {
         />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("Home")}
+          onPress={() =>login()}
         >
-          <Text>Logar</Text>
+          <Text>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.button}
+          style={styles.register}
           onPress={() => navigation.navigate("Register")}
         >
-          <Text>Register</Text>
+          <Text style={styles.textRegister}>Register</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -70,7 +72,21 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 10,
   },
-  buttons: {
+  register: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: 100,
+    height: 50,
+    borderRadius: 5,
+    padding: 5,
+    margin: 10,
+    
+  },
+  textRegister:{
+    textDecorationStyle:"solid",
+    textDecorationLine:"underline",
+  },
+  views: {
     alignItems: "center",
     justifyContent: "space-around",
     width:200,
@@ -78,9 +94,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     borderBlockColor: "black",
-  },
-  texto:{
-    fontSize: 40,
   },
   view: {
     alignItems: "center",
