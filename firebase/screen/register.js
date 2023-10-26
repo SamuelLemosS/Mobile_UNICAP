@@ -10,21 +10,29 @@ import {
   Image,
 } from "react-native";
 import { useEffect, useReducer, useState } from "react";
+import { auth } from "../firebase";
 import { useNavigation } from "@react-navigation/native";
 
 
-export default function Login() {
+export default function Register() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const navigation = useNavigation();
 
-  function login(){
-    console.log(name)
+  const {setIsLogin} = useContext(userContext)
+
+  async function register(){
+    try{
+      await auth.createUserWithEmailAndPassword(email, password)
+      setIsLogin(true)
+    }catch(error){
+      alert(error.message);
+    }
     console.log(email)
     console.log(password)
-    navigation.navigate("Home")
+    console.log(name)
   }
 
   useEffect(() => {});
@@ -49,7 +57,7 @@ export default function Login() {
         />
         <TouchableOpacity
           style={styles.button}
-          onPress={() =>login()}
+          onPress={() =>register()}
         >
           <Text>Register</Text>
         </TouchableOpacity>

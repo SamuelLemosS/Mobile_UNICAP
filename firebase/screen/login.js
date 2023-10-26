@@ -9,21 +9,30 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import { useEffect, useReducer, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { auth } from "../firebase";
+import { useEffect, useReducer, useState, useContext } from "react";
+import { useNavigation } from "@react-navigation/native"
+import {userContext} from '../context'
 
 
 export default function Login() {
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
+  const {setIsLogin} = useContext(userContext)
 
-  function login(){
+  async function login(){
+    try{
+      await auth.signInWithEmailAndPassword(email, password)
+      setIsLogin(true)
+    }catch(error){
+      alert(error.message);
+    }
     console.log(email)
     console.log(password)
-    navigation.navigate("Home")
+    
   }
+
 
   useEffect(() => {});
 

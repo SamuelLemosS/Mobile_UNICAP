@@ -13,31 +13,14 @@ import { useEffect, useReducer, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 
-export default function Login() {
+export default function Home() {
 
- 
-  const [text, setText] = useState('teste');
-  const navigation = useNavigation();
 
   useEffect(() => {});
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttons}>
-        <Text style={styles.texto}>{text}</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => rolaDados()}
-        >
-          <Text>Jogar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Register")}
-        >
-          <Text>Register</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.text}>Seja bem vindo</Text>
     </View>
   );
 }
